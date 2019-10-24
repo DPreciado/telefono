@@ -212,13 +212,16 @@ namespace GraficadorSeñales
                 int indiceMinimo = 0;
                 for(int i=0; i<señalResultante.Muestras.Count/2; i++)
                 {
-                    if(señalResultante.Muestras[i].Y > señalResultante.Muestras[indiceMaximo].Y && indiceMaximo <= indiceMaximo)
+                    if(señalResultante.Muestras[i].Y >= señalResultante.Muestras[indiceMaximo].Y)
                     {
                         indiceMaximo = i;
                     }
                     else
                     {
-                        indiceMinimo = i;
+                        if(indiceMinimo<indiceMaximo && i<=indiceMinimo)
+                        {
+                            indiceMinimo = indiceMaximo;
+                        }
                     }
                 }
                 double frecuencia = 
@@ -232,6 +235,8 @@ namespace GraficadorSeñales
                 lblHz.Text = frecuencia.ToString("N") + "Hz";
                 lblHz_Copy.Text = frecuenciaMin.ToString("N") + "Hz";
             }
+
+            //Hz min
 
             //original
             lblLimiteSuperior.Text = amplitudMaxima.ToString("F");
