@@ -209,34 +209,47 @@ namespace GraficadorSeñales
             if (CbOperacion.SelectedIndex == 4)
             {
                 int indiceMaximo = 0;
-                int indiceMinimo = 0;
-                for(int i=0; i<señalResultante.Muestras.Count/2; i++)
+                int indiceInicial =
+                    (int)((690.0 * (double)(señalResultante.Muestras.Count)) / señalResultante.FrecuenciaMuestreo);
+                int indiceFinal = 
+                    (int)((950.0 * (double)(señalResultante.Muestras.Count)) / señalResultante.FrecuenciaMuestreo);
+
+                for (int i=indiceInicial; i<indiceFinal; i++)
                 {
-                    if(señalResultante.Muestras[i].Y >= señalResultante.Muestras[indiceMaximo].Y)
+                    if(señalResultante.Muestras[i].Y > señalResultante.Muestras[indiceMaximo].Y)
                     {
                         indiceMaximo = i;
-                    }
-                    else
-                    {
-                        if(indiceMinimo<indiceMaximo && i<=indiceMinimo)
-                        {
-                            indiceMinimo = indiceMaximo;
-                        }
                     }
                 }
                 double frecuencia = 
                     (double)(indiceMaximo) * señalResultante.FrecuenciaMuestreo / 
                     (double)(señalResultante.Muestras.Count);
 
-                double frecuenciaMin =
-                    (double)(indiceMinimo) * señalResultante.FrecuenciaMuestreo /
+                lblHzBaja.Text = frecuencia.ToString("N") + "Hz";
+
+                //Hz min
+                int indiceMaximaAlta = 0;
+                int indiceInicialAlta =
+                    (int)((1200.0*(double)señalResultante.Muestras.Count) /
+                    (double)señalResultante.FrecuenciaMuestreo);
+                int indiceFinalAlta =
+                    (int)((1482.0 * (double)señalResultante.Muestras.Count) /
+                    (double)señalResultante.FrecuenciaMuestreo);
+                for(int i=indiceInicialAlta; i<=indiceFinalAlta; i++)
+                {
+                    if(señalResultante.Muestras[i].Y>señalResultante.Muestras[indiceMaximaAlta].Y)
+                    {
+                        indiceMaximaAlta = i;
+                    }
+                }
+                double frecuenciaAlta =
+                    (double)(indiceMaximaAlta * señalResultante.FrecuenciaMuestreo) /
                     (double)(señalResultante.Muestras.Count);
 
-                lblHz.Text = frecuencia.ToString("N") + "Hz";
-                lblHz_Copy.Text = frecuenciaMin.ToString("N") + "Hz";
+                lblHzAlta.Text = frecuenciaAlta.ToString("N") + "Hz";
             }
 
-            //Hz min
+
 
             //original
             lblLimiteSuperior.Text = amplitudMaxima.ToString("F");

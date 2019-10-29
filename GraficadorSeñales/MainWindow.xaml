@@ -61,9 +61,9 @@
             <ComboBoxItem Content="Señal Exponencial"/>
             <ComboBoxItem Content="Señal Audio"/>
         </ComboBox>
-        <TextBlock x:Name="lblHz" HorizontalAlignment="Left" Margin="10,561,0,0" TextWrapping="Wrap" Text="0 Hz" VerticalAlignment="Top" FontSize="30"/>
-        <TextBlock x:Name="lblHz_Copy" HorizontalAlignment="Left" Margin="10,512,0,0" TextWrapping="Wrap" Text="0 Hz" VerticalAlignment="Top" FontSize="30"/>
-        <TextBlock x:Name="lblNum" HorizontalAlignment="Left" Margin="10,610,0,0" TextWrapping="Wrap" Text="0 Hz" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock x:Name="lblHzAlta" HorizontalAlignment="Left" Margin="10,561,0,0" TextWrapping="Wrap" Text="0 Hz" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock x:Name="lblHzBaja" HorizontalAlignment="Left" Margin="10,512,0,0" TextWrapping="Wrap" Text="0 Hz" VerticalAlignment="Top" FontSize="30"/>
+        <TextBlock x:Name="lblNum" HorizontalAlignment="Left" Margin="10,610,0,0" TextWrapping="Wrap" Text="# 0" VerticalAlignment="Top" FontSize="30"/>
 
 
 
